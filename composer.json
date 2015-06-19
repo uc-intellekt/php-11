@@ -1,5 +1,6 @@
 {
     "require": {
-        "monolog/monolog": "~1.13"
+        "monolog/monolog": "~1.13",
+        "doctrine/dbal": "~2.5"
     }
 }
