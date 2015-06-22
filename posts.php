@@ -8,12 +8,12 @@ $posts = $conn->fetchAll("SELECT * FROM posts");
 
 <?php foreach ($posts as $post) : ?>
 	<h2>
-		<a href="<?= $_SERVER['PHP_SELF'] ?>?id=<?= $post['id'] ?>">
+		<a href="<?= $request->server->get('SCRIPT_NAME') ?>?id=<?= $post['id'] ?>">
 			<?= $post['heading'] ?>
 		</a>
 	</h2>
 	<p><?= $post['intro'] ?></p>
 	<div>
-		<a href="<?= $_SERVER['PHP_SELF'] ?>?id=<?= $post['id'] ?>">read more...</a>
+		<a href="<?= $request->server->get('SCRIPT_NAME') ?>?id=<?= $post['id'] ?>">read more...</a>
 	</div>
 <?php endforeach ?>
