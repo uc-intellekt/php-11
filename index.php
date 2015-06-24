@@ -52,8 +52,15 @@ switch ($request->server->get('PATH_INFO')) {
 		}
 
 		break;
+	case '/admin/post/new':
+		require_once 'admin-post.php';
+		break;
 	case '/admin/post/delete':
-		// @TODO execute DELETE query...
+		$conn->delete('posts', [
+			'id' => $request->query->getInt('id'),
+		]);
+		header('Location: ' . $request->server->get('SCRIPT_NAME') . '/admin/post');
+		exit;
 		break;
 	default:
 		header('HTTP/1.0 404 Not Found');

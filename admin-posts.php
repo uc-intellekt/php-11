@@ -6,6 +6,10 @@ $posts = $conn->fetchAll("SELECT * FROM posts");
 
 <h1>Posts</h1>
 
+<a href="<?= $request->server->get('SCRIPT_NAME') ?>/admin/post/new">
+	New
+</a>
+
 <table>
 	<tr>
 		<th>ID</th>
