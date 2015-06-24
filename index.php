@@ -34,6 +34,18 @@ $connectionParams = array(
 );
 $conn = DriverManager::getConnection($connectionParams, $config);
 
+function path($path = '')
+{
+	global $request;
+
+	return $request->server->get('SCRIPT_NAME') . $path;
+}
+function url($path = '')
+{
+	global $request;
+
+	return $request->getSchemeAndHttpHost() . path($path);
+}
 
 switch ($request->server->get('PATH_INFO')) {
 	case '':
@@ -59,7 +71,7 @@ switch ($request->server->get('PATH_INFO')) {
 		$conn->delete('posts', [
 			'id' => $request->query->getInt('id'),
 		]);
-		header('Location: ' . $request->server->get('SCRIPT_NAME') . '/admin/post');
+		header('Location: ' . path('/admin/post'));
 		exit;
 		break;
 	default:
